@@ -1,0 +1,13 @@
+﻿{
+     "package": "FARMWARE_NEOBUILD",
+     "language": "python",
+     "author": "Sylvain Vaugon & Ciarán Hagen",
+     "description": "Automate farmbot processes",
+     "version": "1.7.3",
+     "min_os_version_major": 6,
+     "url": "https://raw.githubusercontent.com/Neobuild/FARMWARE/master/manifest.json",
+     "zip": "https://github.com/Neobuild/FARMWARE/archive/master.zip",
+     "executable": "python",
+     "args": ["MA-master/launch.py"],
+     "config": []
+}
