@@ -260,7 +260,7 @@ class Structure():
         except Exception as error:
             log(repr(error))
         log("Saved plant objects.", message_type='info')
-        log("{}".format(filer), message_type='info')
+        
             
     def loadPlants(self):
         log("Loading plants.", message_type='info')
