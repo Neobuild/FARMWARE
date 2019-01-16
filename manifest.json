@@ -3,7 +3,7 @@
      "language": "python",
      "author": "Neobuild",
      "description": "Automate farmbot processes",
-     "version": "1.7.4",
+     "version": "1.7.5",
      "min_os_version_major": 6,
      "url": "https://raw.githubusercontent.com/Neobuild/FARMWARE/master/manifest.json",
      "zip": "https://github.com/Neobuild/FARMWARE/archive/master.zip",
