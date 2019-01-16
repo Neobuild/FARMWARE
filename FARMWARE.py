@@ -384,6 +384,18 @@ class MyFarmware():
         value = bot_state['pins']['64']['value']
         log(str(value), message_type='info')
         return (value > 400)
+    
+    def env(self):
+        
+        
+        headers = {'Authorization': 'bearer {}'.format(os.environ['FARMWARE_TOKEN']), 'content-type': "application/json"}
+
+        response = requests.get(os.environ['FARMWARE_URL'] + 'api/farmware_envs', headers=headers)
+
+        env = response.json()
+        #value = bot_state['pins']['64']['value']
+        log(str(env), message_type='info')
+        
    
     def waterFall(self, mm): #<-- implement
         try:
@@ -579,6 +591,8 @@ class MyFarmware():
         self.struct.savePots()
         self.getTool("planter")
         log("{}".format(filer), message_type='info')
+        self.env()
+        
         for p in holeL:
             self.goto(p.pot.x, p.pot.y, p.pot.z)   
         self.putTool("planter")
