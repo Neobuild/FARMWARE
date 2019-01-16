@@ -394,7 +394,7 @@ class MyFarmware():
 
         env = response.json()
         #value = bot_state['pins']['64']['value']
-        log(str(env), message_type='info')
+        log("env", message_type='info')
         
    
     def waterFall(self, mm): #<-- implement
@@ -591,7 +591,7 @@ class MyFarmware():
         self.struct.savePots()
         self.getTool("planter")
         log("{}".format(filer), message_type='info')
-        self.env()
+        #self.env()
         
         for p in holeL:
             self.goto(p.pot.x, p.pot.y, p.pot.z)   
