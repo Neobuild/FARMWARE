@@ -477,8 +477,8 @@ class MyFarmware():
         l = self.struct.toolList[tool]
         s = Sequence("putTool", "green")
         s.add(self.goto(l[0] - 100 , l[1], l[2]-2))
-        s.add(self.move(l[0], l[1], l[2]-2, 50))
-        s.add(self.move(l[0], l[1], l[2] + 100, 50))
+        s.add(self.move(l[0], l[1], l[2]-2, 100))
+        s.add(self.move(l[0], l[1], l[2] + 100, 100))
         s.add(log("Putting back "+tool+".", message_type='info'))
         send(cp.create_node(kind='execute', args=s.sequence)) 
         self.coords = [l[0], l[1],l[2] + 100]
@@ -577,6 +577,7 @@ class MyFarmware():
         self.struct.savePlants()
         self.struct.savePots()
         self.getTool("planter")
+        log("{}".format(filer), message_type='info')
         for p in holeL:
             self.goto(p.pot.x, p.pot.y, p.pot.z)   
         self.putTool("planter")
