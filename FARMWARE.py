@@ -609,21 +609,7 @@ class MyFarmware():
         
         log("Execution successful.", message_type='info')
                 
-        ##TESTS
         
-        #self.s.sendMail(0)
-        #self.s.initFarmLayout()
-        #self.s.initPlantTypes()
-        #print(struct.currDate())
-        #print(struct.currTime())
-        #print(list(pot.region.ident for pot in self.s.potList))
-        #print(list(self.s.regionList[region].ident for region in self.s.regionList))
-        #print(list(pt.name for pt in self.s.plantTypeList))
-        #print("lol Sylvain") 
-        #plant pickle test
-        #self.s.plantList.append(Plant("plant1", potList[0].ident))
-        #print(list(plant.id for plant in plantList))
-        #savePlants()
         """
         print(self.struct.toolList, " <-- toollist")
         print(self.struct.plantList, " <-- plantlist")
@@ -639,10 +625,9 @@ class MyFarmware():
         #print(list(plant.id for plant in plantList))
         
         ##MAIN WHILE
+        """
         while True:
-            """
-            check timelists for tasks, else wait the remaining time
-            """
+           
             break
             currHour = int(self.s.currTime().split(":")[0])
             if (currHour in self.s.waterList) and (self.s.waterList != []):
@@ -655,6 +640,7 @@ class MyFarmware():
                 
             currMin = int(self.s.currTime().split(":")[1])  
             self.waiting((59 - currMin)*60*1000) #59 instead of 60 as safety
+            """
             
             
             
