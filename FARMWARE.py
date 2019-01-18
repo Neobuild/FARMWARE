@@ -260,7 +260,6 @@ class Structure():
         except Exception as error:
             log(repr(error))
         log("Saved plant objects.", message_type='info')
-        
             
     def loadPlants(self):
         log("Loading plants.", message_type='info')
@@ -382,11 +381,8 @@ class MyFarmware():
 
         bot_state = response.json()
         value = bot_state['pins']['64']['value']
-        log(str(value), message_type='info') 
-        
+        log(str(value), message_type='info')
         return (value > 400)
-    
-        
    
     def waterFall(self, mm): #<-- implement
         try:
@@ -455,15 +451,13 @@ class MyFarmware():
             return info
         except Exception as error:
             log("Wait --> " + repr(error))
-            
-   
     
     def goto(self, x, y, z):
         s = Sequence("goto", "green")
-        s.add(self.move(self.coords[0], self.coords[1], 0, 150))
-        s.add(self.move(self.coords[0], y, 0, 150))
-        s.add(self.move(x, y, 0, 120))
-        s.add(self.move(x, y, z, 120))
+        s.add(self.move(self.coords[0], self.coords[1], 0, 100))
+        s.add(self.move(self.coords[0], y, 0, 100))
+        s.add(self.move(x, y, 0, 110))
+        s.add(self.move(x, y, z, 100))
         s.add(log("Moved to "+str(x)+", "+str(y)+", "+str(z)+".", message_type='info'))
         info = send(cp.create_node(kind='execute', args=s.sequence)) 
         self.coords = [x, y, z]
@@ -483,8 +477,8 @@ class MyFarmware():
         l = self.struct.toolList[tool]
         s = Sequence("putTool", "green")
         s.add(self.goto(l[0] - 100 , l[1], l[2]-2))
-        s.add(self.move(l[0], l[1], l[2]-2, 100))
-        s.add(self.move(l[0], l[1], l[2] + 100, 150))
+        s.add(self.move(l[0], l[1], l[2]-2, 50))
+        s.add(self.move(l[0], l[1], l[2] + 100, 50))
         s.add(log("Putting back "+tool+".", message_type='info'))
         send(cp.create_node(kind='execute', args=s.sequence)) 
         self.coords = [l[0], l[1],l[2] + 100]
@@ -583,8 +577,6 @@ class MyFarmware():
         self.struct.savePlants()
         self.struct.savePots()
         self.getTool("planter")
-        
-        
         for p in holeL:
             self.goto(p.pot.x, p.pot.y, p.pot.z)   
         self.putTool("planter")
@@ -616,7 +608,21 @@ class MyFarmware():
         
         log("Execution successful.", message_type='info')
                 
+        ##TESTS
         
+        #self.s.sendMail(0)
+        #self.s.initFarmLayout()
+        #self.s.initPlantTypes()
+        #print(struct.currDate())
+        #print(struct.currTime())
+        #print(list(pot.region.ident for pot in self.s.potList))
+        #print(list(self.s.regionList[region].ident for region in self.s.regionList))
+        #print(list(pt.name for pt in self.s.plantTypeList))
+        #print("lol Sylvain") 
+        #plant pickle test
+        #self.s.plantList.append(Plant("plant1", potList[0].ident))
+        #print(list(plant.id for plant in plantList))
+        #savePlants()
         """
         print(self.struct.toolList, " <-- toollist")
         print(self.struct.plantList, " <-- plantlist")
@@ -632,9 +638,10 @@ class MyFarmware():
         #print(list(plant.id for plant in plantList))
         
         ##MAIN WHILE
-        """
         while True:
-           
+            """
+            check timelists for tasks, else wait the remaining time
+            """
             break
             currHour = int(self.s.currTime().split(":")[0])
             if (currHour in self.s.waterList) and (self.s.waterList != []):
@@ -647,7 +654,6 @@ class MyFarmware():
                 
             currMin = int(self.s.currTime().split(":")[1])  
             self.waiting((59 - currMin)*60*1000) #59 instead of 60 as safety
-            """
             
             
             
