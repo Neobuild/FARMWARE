@@ -3,11 +3,11 @@
      "language": "python",
      "author": "Neobuild",
      "description": "Automate farmbot processes",
-     "version": "1.8.1",
+     "version": "1.8.2",
      "min_os_version_major": 6,
      "url": "https://raw.githubusercontent.com/Neobuild/FARMWARE/master/manifest.json",
      "zip": "https://github.com/Neobuild/FARMWARE/archive/master.zip",
      "executable": "python",
      "args": ["FARMWARE-master/launch.py"],
-     "config": []
+     "config": [{"name": "input", "label": "input", "value": 5 },]
 }
