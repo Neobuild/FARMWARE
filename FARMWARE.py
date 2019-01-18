@@ -455,21 +455,7 @@ class MyFarmware():
         except Exception as error:
             log("Wait --> " + repr(error))
             
-    def env(self, label, value):
-        try:
-            log("Waiting {} ms".format(value), message_type='debug')
-            info = send(cp.set_user_env(label=label, value=value))
-            return info
-        except Exception as error:
-            log("Env... --> " + repr(error))
-    
-    def setenv(self, label, value):
-        s = Sequence("setenv", "green")
-        s.add(self.env(label, value))
-        s.add(log("Set value", message_type='info'))
-        info = send(cp.create_node(kind='execute', args=s.sequence))         
-        return info
-    
+   
     
     def goto(self, x, y, z):
         s = Sequence("goto", "green")
@@ -623,9 +609,8 @@ class MyFarmware():
         log("Data loaded.", message_type='info')
         
         self.goto(0,0,0)
-        self.setenv(input, 5)
-        #self.water()
-        #self.plant()
+        self.water()
+        self.plant()
         self.goto(0,0,0)
         
         log("Execution successful.", message_type='info')
