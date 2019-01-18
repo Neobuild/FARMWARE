@@ -125,7 +125,7 @@ def add_point(point_x, point_y, point_z, point_r):
     return point
 
 
-@_print_json
+#@_print_json
 def set_user_env(label, value):
     """Celery Script to set an environment variable.
 
