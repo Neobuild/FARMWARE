@@ -382,17 +382,7 @@ class MyFarmware():
 
         bot_state = response.json()
         value = bot_state['pins']['64']['value']
-        log(str(value), message_type='info')
-        
-        token = ''
-        Headers = {'Authorization': 'Bearer {}'.format(os.environ['FARMWARE_TOKEN'], 'content-type': 'application/json'}
-        data = json.dumps({'pin_guard_5_time_out': '23'})
-        response = requests.put('https://my.farmbot.io/api/firmware_config', Headers=headers, data=data)
-        response = requests.get(os.environ['FARMWARE_URL'] + 'api/firmware_config', headers=headers)
-        log(str(response.json()), message_type='info')
-        
-        
-        
+        log(str(value), message_type='info') 
         
         return (value > 400)
     
