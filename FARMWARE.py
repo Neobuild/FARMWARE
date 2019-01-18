@@ -457,7 +457,7 @@ class MyFarmware():
             
     def env(self, label, value):
         try:
-            log("Waiting {} ms".format(time), message_type='debug')
+            log("Waiting {} ms".format(value), message_type='debug')
             info = send(cp.set_user_env(label=label, value=value))
             return info
         except Exception as error:
