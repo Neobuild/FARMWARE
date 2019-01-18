@@ -253,7 +253,7 @@ class Structure():
         try:
             for plant in self.plantList:
                 fname = plant.id + ".txt"
-                filer = join(dirname('/root/farmware/'), 'plants', fname)
+                filer = join('/root/farmware/', 'plants' + ".txt")
                 f = open(filer, "wb")
                 pickle.dump(plant, f)
                 f.close()
@@ -457,10 +457,10 @@ class MyFarmware():
     
     def goto(self, x, y, z):
         s = Sequence("goto", "green")
-        s.add(self.move(self.coords[0], self.coords[1], 0, 100))
-        s.add(self.move(self.coords[0], y, 0, 100))
-        s.add(self.move(x, y, 0, 110))
-        s.add(self.move(x, y, z, 100))
+        s.add(self.move(self.coords[0], self.coords[1], 0, 150))
+        s.add(self.move(self.coords[0], y, 0, 150))
+        s.add(self.move(x, y, 0, 120))
+        s.add(self.move(x, y, z, 120))
         s.add(log("Moved to "+str(x)+", "+str(y)+", "+str(z)+".", message_type='info'))
         info = send(cp.create_node(kind='execute', args=s.sequence)) 
         self.coords = [x, y, z]
@@ -481,7 +481,7 @@ class MyFarmware():
         s = Sequence("putTool", "green")
         s.add(self.goto(l[0] - 100 , l[1], l[2]-2))
         s.add(self.move(l[0], l[1], l[2]-2, 100))
-        s.add(self.move(l[0], l[1], l[2] + 100, 100))
+        s.add(self.move(l[0], l[1], l[2] + 100, 150))
         s.add(log("Putting back "+tool+".", message_type='info'))
         send(cp.create_node(kind='execute', args=s.sequence)) 
         self.coords = [l[0], l[1],l[2] + 100]
@@ -607,7 +607,7 @@ class MyFarmware():
         log("Data loaded.", message_type='info')
         
         self.goto(0,0,0)
-        self.water()
+        #self.water()
         self.plant()
         self.goto(0,0,0)
         
