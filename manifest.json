@@ -1,9 +1,9 @@
 {
      "package": "FARMWARE_NEOBUILD",
      "language": "python",
-     "author": "Neobuild",
+     "author": "Neobuild Justin",
      "description": "Automate farmbot processes",
-     "version": "1.8.3",
+     "version": "1.8.4",
      "min_os_version_major": 6,
      "url": "https://raw.githubusercontent.com/Neobuild/FARMWARE/master/manifest.json",
      "zip": "https://github.com/Neobuild/FARMWARE/archive/master.zip",
