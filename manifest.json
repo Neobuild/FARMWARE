@@ -3,7 +3,7 @@
      "language": "python",
      "author": "Neobuild Justin",
      "description": "Get this thing to work",
-     "version": "1.8.5",
+     "version": "1.8.6",
      "min_os_version_major": 6,
      "url": "https://raw.githubusercontent.com/Neobuild/FARMWARE/master/manifest.json",
      "zip": "https://github.com/Neobuild/FARMWARE/archive/master.zip",
