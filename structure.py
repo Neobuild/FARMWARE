@@ -8,6 +8,7 @@ import CeleryPy as cp
 ##List of functions and classes for ease of use
 """
 classes:
+-
 PlantType(name, lightNeeded, growthTimeS, growthTimeP, growthTimeF)
 Plant(kind, pot)
 Pot(region, posx, posy, posz)
