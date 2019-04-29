@@ -475,8 +475,8 @@ class MyFarmware():
     def putTool(self, tool):
         l = self.struct.toolList[tool]
         s = Sequence("putTool", "green")
-        s.add(self.goto(l[0] - 100 , l[1], l[2]-2))
-        s.add(self.move(l[0], l[1], l[2]-2, 50))
+        s.add(self.goto(l[0] - 100 , l[1], l[2]-10))
+        s.add(self.move(l[0], l[1], l[2], 50))
         s.add(self.move(l[0], l[1], l[2] + 100, 50))
         s.add(log("Putting back "+tool+".", message_type='info'))
         send(cp.create_node(kind='execute', args=s.sequence)) 
