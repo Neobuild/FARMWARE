@@ -547,6 +547,9 @@ class MyFarmware():
             if whereWater[i] > 0:                       # if the level in whereWater is > 0 (so if the level of water needed is not nada)
                 self.goto(l[i][0], l[i][1], l[i][2])    # go to the access point (This time without the offset for the tool)
                 self.waterFall(whereWater[i])           # unleash the water :) The value entered here is in mm. The function "waterFall" (391) transforms this value into seconds. <-- WE NEVER MEASURED THE OUTPUT PER SECOND; SO THE VALUE IN THIS FUNCTION HAS TO BE ADJUSTED!!!
+        
+        self.goto(0,0,0)
+        log("finished watering sequence", message_type='info')
     
     def makePlant(self, pot, tplant):   #This just creates a virtual image of a plant with a lot of infos. Don't worry about this one.
         if pot.plant == None:
@@ -561,6 +564,7 @@ class MyFarmware():
                 return plant, plant
                 
     def plant(self):
+        log("Starting the plant sequence", message_type='info')
         filer = join(dirname(__file__), 'input.txt') # path to the input file. This part has to be changed obviously if you get the proper webapp working.
         holeL = [] # list of the plants to be planted that need a hole for the seed
         plantL = [] # list of all plants to be planted
@@ -572,7 +576,7 @@ class MyFarmware():
             line = line.split() # split the line at the " " symbol. This makes line into an array of strings with line[0] being the number of plants and line[1] being the plant type.
             readL.append((line[0],line[1])) # adds the number and type to readL in a tuple.
         f.close() # closes the file for reading.
-
+        log("file read", message_type='info')
         #FILL holeL and plantL
         for p in readL:                                                                         # for every tuple (number, type) in readL
             for z in range(int(p[0])):                                                          # makes the next part execute "number" times
@@ -615,10 +619,11 @@ class MyFarmware():
         self.struct = Structure()				#This initializes the layout of the farm. It loads pots and plants that were created in a former run of the program from the "plants" and "pots" directories. It loads all existing pots from potLayout.xml. The pots are determined be coords, so the existing pots should normally not be overwritten by this.
         log("Data loaded.", message_type='info')		#Just some fancy information.
         
-        self.goto(0,0,0)					#send the bot to 0,0,0. Not necessary, but a nice check to see if the origin is properly set.
+        self.goto(0,0,0)    #send the bot to 0,0,0. Not necessary, but a nice check to see if the origin is properly set.
+        log("Went to 0,0,0.", message_type='info') 
         self.water()						#Water sequence at line 525
+        log("water sequence finished", message_type='info')
         self.plant()                                            #Plant sequence at line 561
-            
         log("Execution successful.", message_type='info')
                 
         ##TESTS
