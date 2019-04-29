@@ -475,7 +475,7 @@ class MyFarmware():
     def putTool(self, tool):
         l = self.struct.toolList[tool]
         s = Sequence("putTool", "green")
-        s.add(self.goto(l[0] - 100 , l[1], l[2]-10))
+        s.add(self.goto(l[0] - 100 , l[1], l[2]-20))
         s.add(self.move(l[0], l[1], l[2], 50))
         s.add(self.move(l[0], l[1], l[2] + 100, 50))
         s.add(log("Putting back "+tool+".", message_type='info'))
@@ -585,11 +585,11 @@ class MyFarmware():
                 if x[0] != None:                                                                # This is a bit weird. The makePlant function returns a tuple of either (None, <plant object>) if no hole is needed or (<plant object>, <SAME plant object>) if a hole is needed.
                     holeL.append(x[0])                                                          # if a hole is needed, append the plant object to the holeL list.
                 plantL.append(x[1])                                                             # either way, append the plant object to the planting list.
-                
+        log("did the for read loop", message_type='info')       
         self.struct.savePlants() # saves the plants to the "plants" folder using Pickler.
         self.struct.savePots() # saves the pots to the "pots" folder using Pickler.
         self.getTool("planter") # gets the 3D printed cone tool also known as a "hole-poker" in very professional terms...
-
+        log("got the planter", message_type='info')
         #HOLES
         for p in holeL:                             # for each plant in the (w)hole list (pardon the pun)
             self.goto(p.pot.x, p.pot.y, p.pot.z)    # goto the position of the pot. Since this position puts the arm exactly on the surface of the pot, the tool (which protrudes a little further) will automatically be inside the pot.
@@ -605,7 +605,7 @@ class MyFarmware():
             self.vacuum_off()                               # stop suction. (Seed will hopefully drop into the pot...)
                 
         self.putTool("seeder") # put back the suction needle tool  
-        
+        log("used the seeder", message_type='info')
         f = open(filer, "wb") # This opens the file for writing, effectively overwriting anything inside. So don't be surprised if your test only works once. The commands don't stick around.
         f.close() # close the now empty file
         
