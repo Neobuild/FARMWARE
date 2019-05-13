@@ -574,14 +574,18 @@ class MyFarmware():
         #READ INPUT
         f = open(filer, "rb") # opens the file for reading
         for line in f:  # read one line from f into a STRING called "line" (each line contains a plantType and a number) 
-            line = line.split() # split the line at the " " symbol. This makes line into an array of strings with line[0] being the number of plants and line[1] being the plant type.
-            if not(line.isspace()):
-                readL.append((line[0],line[1])) # adds the number and type to readL in a tuple.
+            if (line == "") :
+              log("empty line", message_type='info')  
+            else:
+              line = line.split() # split the line at the " " symbol. This makes line into an array of strings with line[0] being the number of plants and line[1] being the plant type
+              readL.append((line[0],line[1])) # adds the number and type to readL in a tuple.
+              log("line read", message_type='info')  
         f.close() # closes the file for reading.
         log("file read", message_type='info')
         #FILL holeL and plantL
         for p in readL:                                                                         # for every tuple (number, type) in readL
             for z in range(int(p[0])):                                                          # makes the next part execute "number" times
+                log("doing one thing", message_type='info')  
                 potter = next((pot for pot in self.struct.potList if pot.plant == None), None)  # pot generator. This automatically chooses the next best !empty! pot from struct.potList, which contains the pot objects created from the data read from "potLayout.xml".
                 x = self.makePlant(potter, p[1])                                                # uses the makePlant function on line 556 to create a plant object corresponding to the soon to be planted plant. The plant is initialized with a pot (potter) and a type (p[1])
                 if x[0] != None:                                                                # This is a bit weird. The makePlant function returns a tuple of either (None, <plant object>) if no hole is needed or (<plant object>, <SAME plant object>) if a hole is needed.
