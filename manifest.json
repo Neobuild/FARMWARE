@@ -3,7 +3,7 @@
      "language": "python",
      "author": "Neobuild Justin",
      "description": "Testing new updated stuff",
-     "version": "2.0.10",
+     "version": "2.0.11",
      "min_os_version_major": 6,
      "url": "https://raw.githubusercontent.com/Neobuild/FARMWARE/master/manifest.json",
      "zip": "https://github.com/Neobuild/FARMWARE/archive/master.zip",
