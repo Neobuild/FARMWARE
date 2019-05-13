@@ -475,7 +475,7 @@ class MyFarmware():
     def putTool(self, tool):
         l = self.struct.toolList[tool]
         s = Sequence("putTool", "green")
-        s.add(self.goto(l[0] - 100 , l[1], l[2]-25))
+        s.add(self.goto(l[0] - 100 , l[1], l[2]-22))
         s.add(self.move(l[0], l[1], l[2], 50))
         s.add(self.move(l[0], l[1], l[2] + 100, 50))
         s.add(log("Putting back "+tool+".", message_type='info'))
@@ -548,6 +548,7 @@ class MyFarmware():
                 self.goto(l[i][0], l[i][1], l[i][2]+100)    # go to the access point (This time without the offset for the tool)
                 self.waterFall(whereWater[i])           # unleash the water :) The value entered here is in mm. The function "waterFall" (391) transforms this value into seconds. <-- WE NEVER MEASURED THE OUTPUT PER SECOND; SO THE VALUE IN THIS FUNCTION HAS TO BE ADJUSTED!!!
         
+        self.goto(0,-100,0)
         self.goto(0,0,0)
         log("finished watering sequence", message_type='info')
     
