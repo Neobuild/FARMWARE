@@ -577,6 +577,7 @@ class MyFarmware():
             if (line == "") :
               log("empty line", message_type='info')  
             else:
+              log("The line read is:" line, message_type='info')
               line = line.split() # split the line at the " " symbol. This makes line into an array of strings with line[0] being the number of plants and line[1] being the plant type
               readL.append((line[0],line[1])) # adds the number and type to readL in a tuple.
               log("line read", message_type='info')  
