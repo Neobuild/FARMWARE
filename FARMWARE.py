@@ -559,7 +559,7 @@ class MyFarmware():
             plantTyper = next((y for y in self.struct.plantTypeList if y.name == tplant), None)
             log("def plant", message_type='info')
             plant = Plant(plantTyper, pot)
-            log("Planting " + tplant + " in pot " + pot.ident, message_type='info')
+            log("Planting ", message_type='info')
             pot.plant = plant
             self.struct.plantList.append(plant)
             if plant.kind.hole:
