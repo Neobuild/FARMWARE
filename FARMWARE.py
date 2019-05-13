@@ -574,7 +574,9 @@ class MyFarmware():
         #READ INPUT
         f = open(filer, "rb") # opens the file for reading
         for line in f:  # read one line from f into a STRING called "line" (each line contains a plantType and a number) 
-              log("The line read is:" + line, message_type='info')
+           if (line.isspace()): 
+              log("empty read", message_type='info')  
+           else:
               line = line.split() # split the line at the " " symbol. This makes line into an array of strings with line[0] being the number of plants and line[1] being the plant type
               readL.append((line[0],line[1])) # adds the number and type to readL in a tuple.
               log("line read", message_type='info')  
