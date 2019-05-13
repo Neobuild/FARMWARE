@@ -586,9 +586,12 @@ class MyFarmware():
             for z in range(int(p[0])):                                                          # makes the next part execute "number" times
                 log("doing one thing", message_type='info')  
                 potter = next((pot for pot in self.struct.potList if pot.plant == None), None)  # pot generator. This automatically chooses the next best !empty! pot from struct.potList, which contains the pot objects created from the data read from "potLayout.xml".
+                log("potter worked", message_type='info')  
                 x = self.makePlant(potter, p[1])                                                # uses the makePlant function on line 556 to create a plant object corresponding to the soon to be planted plant. The plant is initialized with a pot (potter) and a type (p[1])
+                log("x worked", message_type='info')
                 if x[0] != None:                                                                # This is a bit weird. The makePlant function returns a tuple of either (None, <plant object>) if no hole is needed or (<plant object>, <SAME plant object>) if a hole is needed.
                     holeL.append(x[0])                                                          # if a hole is needed, append the plant object to the holeL list.
+                log("if worked", message_type='info')
                 plantL.append(x[1])                                                             # either way, append the plant object to the planting list.
         log("did the for read loop", message_type='info')       
         self.struct.savePlants() # saves the plants to the "plants" folder using Pickler.
