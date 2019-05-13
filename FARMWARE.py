@@ -553,8 +553,11 @@ class MyFarmware():
         log("finished watering sequence", message_type='info')
     
     def makePlant(self, pot, tplant):   #This just creates a virtual image of a plant with a lot of infos. Don't worry about this one.
+        log("def", message_type='info')
         if pot.plant == None:
+            log("def if", message_type='info')
             plantTyper = next((y for y in self.struct.plantTypeList if y.name == tplant), None)
+            log("def plant", message_type='info')
             plant = Plant(plantTyper, pot)
             log("Planting " + tplant + " in pot " + pot.ident, message_type='info')
             pot.plant = plant
@@ -574,24 +577,21 @@ class MyFarmware():
         #READ INPUT
         f = open(filer, "rb") # opens the file for reading
         for line in f:  # read one line from f into a STRING called "line" (each line contains a plantType and a number)
-           if not(line.isspace()):
-                log("if worked", message_type='info')  
+           if not(line.isspace()):  
                 line = line.split() # split the line at the " " symbol. This makes line into an array of strings with line[0] being the number of plants and line[1] being the plant type.
-                readL.append((line[0],line[1])) # adds the number and type to readL in a tuple.
-                log("did line", message_type='info')  
+                readL.append((line[0],line[1])) # adds the number and type to readL in a tuple.  
         f.close() # closes the file for reading.
         log("file read", message_type='info')
         #FILL holeL and plantL
         for p in readL:                                                                         # for every tuple (number, type) in readL
-            for z in range(int(p[0])):                                                          # makes the next part execute "number" times
-                log("doing one thing", message_type='info')  
-                potter = next((pot for pot in self.struct.potList if pot.plant == None), None)  # pot generator. This automatically chooses the next best !empty! pot from struct.potList, which contains the pot objects created from the data read from "potLayout.xml".
-                log("potter worked", message_type='info')  
+            for z in range(int(p[0])):                                                          # makes the next part execute "number" times  
+                potter = next((pot for pot in self.struct.potList if pot.plant == None), None)  # pot generator. This automatically chooses the next best !empty! pot from struct.potList, which contains the pot objects created from the data read from "potLayout.xml".  
+                log("potter seems to work", message_type='info')
                 x = self.makePlant(potter, p[1])                                                # uses the makePlant function on line 556 to create a plant object corresponding to the soon to be planted plant. The plant is initialized with a pot (potter) and a type (p[1])
-                log("x worked", message_type='info')
+                log("x doesnt work currently", message_type='info')
                 if x[0] != None:                                                                # This is a bit weird. The makePlant function returns a tuple of either (None, <plant object>) if no hole is needed or (<plant object>, <SAME plant object>) if a hole is needed.
                     holeL.append(x[0])                                                          # if a hole is needed, append the plant object to the holeL list.
-                log("if worked", message_type='info')
+                log("if dont know worked", message_type='info')
                 plantL.append(x[1])                                                             # either way, append the plant object to the planting list.
         log("did the for read loop", message_type='info')       
         self.struct.savePlants() # saves the plants to the "plants" folder using Pickler.
