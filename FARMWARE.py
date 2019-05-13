@@ -561,10 +561,14 @@ class MyFarmware():
             plant = Plant(plantTyper, pot)
             log("Planting ", message_type='info')
             pot.plant = plant
+            log("plant", message_type='info')
             self.struct.plantList.append(plant)
+            log("self", message_type='info')
             if plant.kind.hole:
+                log("if", message_type='info')
                 return None,plant
             else:
+                log("else", message_type='info')
                 return plant, plant
                 
     def plant(self):
