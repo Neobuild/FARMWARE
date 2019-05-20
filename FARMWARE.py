@@ -564,9 +564,7 @@ class MyFarmware():
             log("plant", message_type='info')
             self.struct.plantList.append(plant)
             log("self", message_type='info')
-            send_message('Hello World!',message_type='success', None)
             mess = str(plant.kind.hole)
-            
             log( mess , message_type='info')
             if plant.kind.hole:
                 log("if", message_type='info')
