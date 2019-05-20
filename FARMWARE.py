@@ -642,9 +642,11 @@ class MyFarmware():
         log("Data loaded.", message_type='info')		#Just some fancy information.
         
         self.goto(0,0,0)    #send the bot to 0,0,0. Not necessary, but a nice check to see if the origin is properly set.
-        log("Went to 0,0,0.", message_type='info') 
+        send_message('Hello World!', message_type='success')
        # self.water()						#Water sequence at line 525
-        log("water sequence finished", message_type='info')
+        print(list(plant.id for plant in plantList))
+        
+        
         self.plant()                                            #Plant sequence at line 561
         log("Execution successful.", message_type='info')
                 
@@ -675,7 +677,7 @@ class MyFarmware():
         print(self.struct.toolList, " <-- toolList")
         """
         #loadPlants()
-        #print(list(plant.id for plant in plantList))
+       
         
         ##MAIN WHILE
         while True:
