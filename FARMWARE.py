@@ -553,16 +553,12 @@ class MyFarmware():
         log("finished watering sequence", message_type='info')
     
     def makePlant(self, pot, tplant):   #This just creates a virtual image of a plant with a lot of infos. Don't worry about this one.
-        log("def", message_type='info')
         if pot.plant == None:
-            log("def if", message_type='info')
             plantTyper = next((y for y in self.struct.plantTypeList if y.name == tplant), None)
-            log("def plant", message_type='info')
             plant = Plant(plantTyper, pot)
-            log("Planting ", message_type='info')
             pot.plant = plant
-            log("plant", message_type='info')
             self.struct.plantList.append(plant)
+            
             mess= plant
             mes = str(mess)
             log( mes , message_type='info')
