@@ -642,7 +642,7 @@ class MyFarmware():
         log("Data loaded.", message_type='info')		#Just some fancy information.
         
         self.goto(0,0,0)    #send the bot to 0,0,0. Not necessary, but a nice check to see if the origin is properly set.
-        send_message('Hello World!', message_type='success')
+        send_message('Hello World!','success')
        # self.water()						#Water sequence at line 525
         print(list(plant.id for plant in plantList))
         
