@@ -221,9 +221,9 @@ class Structure():
         for plantType in e:
             name = plantType.attrib["name"]
             if int(plantType.attrib["hole"]) == 1:
-               return hole = True
+                hole = True
             else:
-               return hole = False
+                hole = False
             gt0 = int(plantType.attrib["gt0"])
             gt1 = int(plantType.attrib["gt1"])        
             gt2 = int(plantType.attrib["gt2"]) 
@@ -564,12 +564,16 @@ class MyFarmware():
             log("plant", message_type='info')
             self.struct.plantList.append(plant)
             log("self", message_type='info')
+            send_message('Hello World!',message_type='success', None)
+            mess = str(plant.kind.hole)
+            
+            log( mess , message_type='info')
             if plant.kind.hole:
                 log("if", message_type='info')
-                return None,plant
+                return plant,plant
             else:
                 log("else", message_type='info')
-                return plant, plant
+                return None, plant
                 
     def plant(self):
         log("Starting the plant sequence", message_type='info')
