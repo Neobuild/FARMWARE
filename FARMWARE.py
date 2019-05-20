@@ -221,9 +221,9 @@ class Structure():
         for plantType in e:
             name = plantType.attrib["name"]
             if int(plantType.attrib["hole"]) == 1:
-                hole = True
+               return hole = True
             else:
-                hole = False
+               return hole = False
             gt0 = int(plantType.attrib["gt0"])
             gt1 = int(plantType.attrib["gt1"])        
             gt2 = int(plantType.attrib["gt2"]) 
