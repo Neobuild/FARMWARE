@@ -574,12 +574,12 @@ class MyFarmware():
             
             log("self", message_type='info')
            
-            if plant.kind.hole:
+            if plant.kind.hole == 1:
                 log("if", message_type='info')
                 return plant,plant
             else:
                 log("else", message_type='info')
-                return None, plant
+                return None,plant
                 
     def plant(self):
         log("Starting the plant sequence", message_type='info')
