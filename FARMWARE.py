@@ -561,7 +561,7 @@ class MyFarmware():
             
        
             
-            mess= plant.kind.hole
+            mess= plant.kind
             mes = str(mess)
             log( mes , message_type='info')
             
