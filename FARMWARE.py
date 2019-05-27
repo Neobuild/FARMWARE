@@ -559,7 +559,10 @@ class MyFarmware():
             pot.plant = plant
             self.struct.plantList.append(plant)
             
-       
+        
+            mess= plant
+            mes = str(mess)
+            log( mes , message_type='info')
             
             mess= plant.kind
             mes = str(mess)
