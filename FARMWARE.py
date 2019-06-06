@@ -640,6 +640,11 @@ class MyFarmware():
         
         self.goto(0,0,0)    #send the bot to 0,0,0. Not necessary, but a nice check to see if the origin is properly set.
        # self.water()						#Water sequence at line 525
+        send_message(message='Hello World!', message_type='success', channel=toast)
+       
+        send_message(message='Does this work?', message_type='info', channel=toast)
+        
+        send_message(message='Hello World!', message_type='success', channel=email)
         self.plant()                                            #Plant sequence at line 561
         log("Execution successful.", message_type='info')
                 
